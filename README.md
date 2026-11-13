@@ -4,7 +4,7 @@ Dedicated repository for the PowerShell implementation of PRAXO-CORE: an
 embeddable, MIT-licensed agent execution kernel with policy controls,
 human-in-the-loop approval, checkpoints, events, and tool calling.
 
-- Package: `praxo-core-ps` (`0.3.1`)
+- Package: `praxo-core-ps` (`0.5.3`)
 - Registry: PowerShell Gallery
 - Install: `Install-Module praxo-core-ps`
 - Documentation: https://axisvela.github.io/praxo-core/languages/powershell/
