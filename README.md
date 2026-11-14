@@ -8,6 +8,7 @@ human-in-the-loop approval, checkpoints, events, and tool calling.
 - Registry: PowerShell Gallery
 - Install: `Install-Module praxo-core-ps`
 - Documentation: https://axisvela.github.io/praxo-core/languages/powershell/
+- Examples: https://github.com/axisvela/praxo-core-powershell/tree/main/language/powershell/examples
 - Mirror repository: https://github.com/axisvela/praxo-core-powershell
 - Canonical source: https://github.com/axisvela/praxo-core/tree/main/language/powershell
 - Release index: https://axisvela.github.io/praxo-core/languages/registry-status/
