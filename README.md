@@ -1,31 +1,115 @@
 # PRAXO-CORE for PowerShell
 
-Dedicated repository for the PowerShell implementation of PRAXO-CORE: an
-embeddable, MIT-licensed agent execution kernel with policy controls,
-human-in-the-loop approval, checkpoints, events, and tool calling.
+PowerShell Core package `praxo-core-ps`, a shared-runtime wrapper over the C# PRAXO-CORE framework. Requires PowerShell 7.4+ on .NET 8.
 
-- Package: `praxo-core-ps` (`0.5.3`)
-- Registry: PowerShell Gallery
-- Install: `Install-Module praxo-core-ps`
-- Documentation: https://axisvela.github.io/praxo-core/languages/powershell/
-- Examples: https://github.com/axisvela/praxo-core-powershell/tree/main/language/powershell/examples
-- Mirror repository: https://github.com/axisvela/praxo-core-powershell
-- Canonical source: https://github.com/axisvela/praxo-core/tree/main/language/powershell
-- Release index: https://axisvela.github.io/praxo-core/languages/registry-status/
+## At a glance
 
-This repository is a discovery mirror of the canonical PowerShell source.
-The monorepo remains the source of truth and the release workflow source. Shared
-conformance vectors are included under `spec/`, so the implementation can be
-built and tested here.
+| Field | Value |
+| --- | --- |
+| Package | `praxo-core-ps` |
+| Registry | [PowerShell Gallery](https://www.powershellgallery.com/packages/praxo-core-ps/0.5.3) |
+| Install | `Install-Module praxo-core-ps` |
+| Source version | `0.5.3` |
+| Published version | `0.5.3` |
+| Source tag | `powershell/v0.5.3` |
+| Tier | Core (.NET) |
+| Contract | `SPEC_VERSION` `0.2.0` |
+| Documentation | https://axisvela.github.io/praxo-core/languages/powershell/ |
+| License | MIT |
+
+## Highlights
+
+- OpenAI-compatible model: inherited
+- Anthropic model: inherited
+- Gemini model: inherited
+- MCP client: native (C# shared runtime)
+- Harmovela sink: inherited
+- OpenTelemetry sink: inherited
+- Subagent delegation: native (synchronous wrapper)
+- Retriever: inherited (wrapper)
+
+## Quick start
+
+Install the published package:
+
+```powershell
+Install-Module praxo-core-ps
+```
+
+```powershell
+$model = New-PraxoStaticModel -Content 'hello'
+$options = New-PraxoAgentOptions -Model $model
+$agent = New-PraxoAgent -Options $options
+$session = New-PraxoSession -Id 'demo'
+(Invoke-PraxoAgent -Agent $agent -Session $session -Prompt 'hello').Output
+```
+
+See the [full PowerShell README](language/powershell/README.md) for complete installation, build, and verification commands.
+
+## What's included
+
+| Capability | Status | Detail |
+| --- | --- | --- |
+| OpenAI-compatible model | inherited | Uses the C# Core |
+| Anthropic model | inherited | Uses the C# Core |
+| Gemini model | inherited | Uses the C# Core |
+| MCP client | native (C# shared runtime) | `Connect-PraxoMcp`, `Get-PraxoMcpTools`, `Invoke-PraxoMcpTool`; wraps the C# MCP client and stdio/Streamable HTTP transports |
+| Harmovela sink | inherited | Uses the C# Core |
+| OpenTelemetry sink | inherited | Uses the C# Core |
+| Subagent delegation | native (synchronous wrapper) | Reuses C# request/result/task types; no asynchronous manager |
+| Retriever | inherited (wrapper) | Wraps C# `Retriever` |
+
+## Examples
+
+Runnable examples live under [`language/powershell/examples`](language/powershell/examples).
+
+| Example | What it shows |
+| --- | --- |
+| [checkpoint](language/powershell/examples/checkpoint) | This example uses the PowerShell Core checkpoint allowlist for a registered payload round trip. |
+| [event-sink](language/powershell/examples/event-sink) | This example demonstrates event fan-out and tool-only filtering with PowerShell-friendly sink collections. |
+| [identity-policy](language/powershell/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, role-mismatched, and tenant-mismatched actions. |
+| [mcp](language/powershell/examples/mcp) | The PowerShell Core does not bundle an MCP client. This example provides a transport-neutral MCP-shaped client boundary: initialize, `tools/list`, and `tools/call` over a caller... |
+| [provider-fallback](language/powershell/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
+| [retry](language/powershell/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
+| [service](language/powershell/examples/service) | This example defines a transport-neutral request handler with health, principal, and run cases. |
+| [streaming](language/powershell/examples/streaming) | This example accumulates streamed chunks and checks that they reconstruct the final output. |
+| [structured-output](language/powershell/examples/structured-output) | This example validates a final JSON answer against a schema and rejects invalid output. |
 
 ## Verify
 
-Build and test instructions are in `language/powershell/README.md`. The
-monorepo CI runs the language's conformance, API snapshot, and native tests.
+Run the checks from `language/powershell`:
 
-PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety
-controller. Do not infer exactly-once execution, complete sandbox isolation,
-production security certification, live-provider behavior, or physical safety
-from this package.
+```bash
+dotnet build language/csharp/Praxo.Core/Praxo.Core.csproj -c Release
+dotnet run --project language/csharp/Praxo.Conformance -c Release
+dotnet run --project language/csharp/Praxo.Tests -c Release
+pwsh -NoProfile -File language/powershell/tests/run.ps1
+pwsh -NoProfile -File language/powershell/api-snapshot.ps1 -Check
+```
+
+This mirror contains the language source and the shared `spec/` vectors, so the implementation can be built and tested here. See [`language/powershell/README.md`](language/powershell/README.md) for the exact commands. The monorepo CI runs conformance, API snapshot, and native tests for this implementation.
+
+## Community
+
+- X: <https://x.com/axisvela>
+- Weibo: <https://weibo.com/u/1936025761>
+
+## Repository layout
+
+- `language/powershell/` — implementation source, tests, API snapshot, and examples
+- `spec/` — shared contract, vectors, and parity inventories
+- `LICENSE` — MIT license
+
+## Canonical source
+
+- Canonical source: https://github.com/axisvela/praxo-core/tree/main/language/powershell
+- Registry introduction: `language/powershell/REGISTRY.md`
+- Machine-readable entry: `language/powershell/llms.txt` and `language/powershell/llms.md`
+- Mirror repository: https://github.com/axisvela/praxo-core-powershell
+- Release index: https://axisvela.github.io/praxo-core/languages/registry-status/
+
+This repository is a discovery mirror of the canonical PowerShell source. The monorepo remains the source of truth and the release workflow source.
+
+PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety controller. Do not infer exactly-once execution, complete sandbox isolation, production security certification, live-provider behavior, or physical safety from this package.
 
 MIT licensed.
