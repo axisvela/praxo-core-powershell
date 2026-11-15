@@ -68,6 +68,7 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 | [checkpoint](language/powershell/examples/checkpoint) | This example uses the PowerShell Core checkpoint allowlist for a registered payload round trip. |
 | [consumer](language/powershell/examples/consumer) | This starter is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. The PowerShell module loads `Praxo.Core.dll`; the agent loop, tools, policy, and deterministic model be... |
 | [event-sink](language/powershell/examples/event-sink) | This example demonstrates event fan-out and tool-only filtering with PowerShell-friendly sink collections. |
+| [hitl](language/powershell/examples/hitl) | This example demonstrates a write tool that requires human approval: |
 | [identity-policy](language/powershell/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, role-mismatched, and tenant-mismatched actions. |
 | [live-model](language/powershell/examples/live-model) | This example is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. It uses the C# `OpenAiCompatibleModel` and registers one low-risk `get_time` tool with a small JSON Sch... |
 | [mcp](language/powershell/examples/mcp) | The PowerShell Core does not bundle an MCP client. This example provides a transport-neutral MCP-shaped client boundary: initialize, `tools/list`, and `tools/call` over a caller... |
