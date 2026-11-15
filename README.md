@@ -9,9 +9,9 @@ PowerShell Core package `praxo-core-ps`, a shared-runtime wrapper over the C# PR
 | Package | `praxo-core-ps` |
 | Registry | [PowerShell Gallery](https://www.powershellgallery.com/packages/praxo-core-ps/0.6.1) |
 | Install | `Install-Module praxo-core-ps` |
-| Source version | `0.6.1` |
+| Source version | `0.7.0` |
 | Published version | `0.6.1` |
-| Source tag | `powershell/v0.6.1` |
+| Source tag | `powershell/v0.7.0` |
 | Tier | Core (.NET) |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/powershell/ |
