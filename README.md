@@ -9,9 +9,9 @@ PowerShell Core package `praxo-core-ps`, a shared-runtime wrapper over the C# PR
 | Package | `praxo-core-ps` |
 | Registry | [PowerShell Gallery](https://www.powershellgallery.com/packages/praxo-core-ps/0.5.3) |
 | Install | `Install-Module praxo-core-ps` |
-| Source version | `0.5.3` |
+| Source version | `0.6.0` |
 | Published version | `0.5.3` |
-| Source tag | `powershell/v0.5.3` |
+| Source tag | `powershell/v0.6.0` |
 | Tier | Core (.NET) |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/powershell/ |
@@ -66,8 +66,10 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 | Example | What it shows |
 | --- | --- |
 | [checkpoint](language/powershell/examples/checkpoint) | This example uses the PowerShell Core checkpoint allowlist for a registered payload round trip. |
+| [consumer](language/powershell/examples/consumer) | This starter is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. The PowerShell module loads `Praxo.Core.dll`; the agent loop, tools, policy, and deterministic model be... |
 | [event-sink](language/powershell/examples/event-sink) | This example demonstrates event fan-out and tool-only filtering with PowerShell-friendly sink collections. |
 | [identity-policy](language/powershell/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, role-mismatched, and tenant-mismatched actions. |
+| [live-model](language/powershell/examples/live-model) | This example is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. It uses the C# `OpenAiCompatibleModel` and registers one low-risk `get_time` tool with a small JSON Sch... |
 | [mcp](language/powershell/examples/mcp) | The PowerShell Core does not bundle an MCP client. This example provides a transport-neutral MCP-shaped client boundary: initialize, `tools/list`, and `tools/call` over a caller... |
 | [provider-fallback](language/powershell/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
 | [retry](language/powershell/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
