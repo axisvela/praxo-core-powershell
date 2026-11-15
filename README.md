@@ -74,6 +74,7 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 | [provider-fallback](language/powershell/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
 | [retry](language/powershell/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
 | [service](language/powershell/examples/service) | This example defines a transport-neutral request handler with health, principal, and run cases. |
+| [session-checkpoint](language/powershell/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns. It uses the module's `New-PraxoSession` and `Invoke-PraxoAgent` over the C# Core runtime, plus the... |
 | [streaming](language/powershell/examples/streaming) | This example accumulates streamed chunks and checks that they reconstruct the final output. |
 | [structured-output](language/powershell/examples/structured-output) | This example validates a final JSON answer against a schema and rejects invalid output. |
 
