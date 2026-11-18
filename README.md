@@ -7,10 +7,10 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its P
 | Field | Value |
 | --- | --- |
 | Package | `praxo-core-ps` |
-| Registry | [PowerShell Gallery](https://www.powershellgallery.com/packages/praxo-core-ps/0.7.1) |
+| Registry | [PowerShell Gallery](https://www.powershellgallery.com/packages/praxo-core-ps/0.7.2) |
 | Install | `Install-Module praxo-core-ps` |
 | Source version | `0.7.2` |
-| Published version | `0.7.1` |
+| Published version | `0.7.2` |
 | Source tag | `powershell/v0.7.2` |
 | Tier | Core (.NET) |
 | Contract | `SPEC_VERSION` `0.2.0` |
