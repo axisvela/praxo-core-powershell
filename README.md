@@ -1,6 +1,6 @@
 # PRAXO-CORE for PowerShell
 
-PowerShell Core package `praxo-core-ps`, a shared-runtime wrapper over the C# PRAXO-CORE framework. Requires PowerShell 7.4+ on .NET 8.
+PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its PowerShell Core: a shared-runtime wrapper over the C# Core for existing PowerShell automation that needs a model/tool loop, explicit policy and tool scope, events, memory, checkpoints, and human-in-the-loop decisions.
 
 ## At a glance
 
