@@ -65,6 +65,7 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 
 | Example | What it shows |
 | --- | --- |
+| [advanced-delegation](language/powershell/examples/advanced-delegation) | Application-level parent/child delegation plus six governance negative checks. |
 | [checkpoint](language/powershell/examples/checkpoint) | This example uses the PowerShell Core checkpoint allowlist for a registered payload round trip. |
 | [consumer](language/powershell/examples/consumer) | This starter is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. The PowerShell module loads `Praxo.Core.dll`; the agent loop, tools, policy, and deterministic model be... |
 | [event-sink](language/powershell/examples/event-sink) | This example demonstrates event fan-out and tool-only filtering with PowerShell-friendly sink collections. |
@@ -73,6 +74,7 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 | [live-model](language/powershell/examples/live-model) | This example is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. It uses the C# `OpenAiCompatibleModel` and registers one low-risk `get_time` tool with a small JSON Sch... |
 | [mcp](language/powershell/examples/mcp) | The PowerShell Core does not bundle an MCP client. This example provides a transport-neutral MCP-shaped client boundary: initialize, `tools/list`, and `tools/call` over a caller... |
 | [provider-fallback](language/powershell/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
+| [representative-chain](language/powershell/examples/representative-chain) | Deterministic representative chain covering MCP record, final-argument authorization, governed child delegation, OTel/Harmovela events, and an edited denial with zero effects. |
 | [retry](language/powershell/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
 | [service](language/powershell/examples/service) | This example defines a transport-neutral request handler with health, principal, and run cases. |
 | [session-checkpoint](language/powershell/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns. It uses the module's `New-PraxoSession` and `Invoke-PraxoAgent` over the C# Core runtime, plus the... |
