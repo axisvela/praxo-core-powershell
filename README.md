@@ -12,8 +12,6 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its P
 | Source version | `0.8.1` |
 | Published version | `0.8.1` |
 | Source tag | `powershell/v0.8.1` |
-| Tutorial tag | `powershell/tutorial/v0.1.0` |
-| Examples tag | `powershell/examples/v0.1.0` |
 | Tier | Core (.NET) |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/powershell/ |
