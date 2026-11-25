@@ -12,6 +12,8 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its P
 | Source version | `0.8.1` |
 | Published version | `0.8.1` |
 | Source tag | `powershell/v0.8.1` |
+| Tutorial tag | `powershell/tutorial/v0.1.0` |
+| Examples tag | `powershell/examples/v0.1.0` |
 | Tier | Core (.NET) |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/powershell/ |
@@ -80,6 +82,16 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 | [session-checkpoint](language/powershell/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns. It uses the module's `New-PraxoSession` and `Invoke-PraxoAgent` over the C# Core runtime, plus the... |
 | [streaming](language/powershell/examples/streaming) | This example accumulates streamed chunks and checks that they reconstruct the final output. |
 | [structured-output](language/powershell/examples/structured-output) | This example validates a final JSON answer against a schema and rejects invalid output. |
+
+## Scenario Tutorials
+
+Scenario-oriented tutorials live under `language/powershell/Tutorial`.
+
+| Path | What it shows |
+| --- | --- |
+| [Tutorial](language/powershell/Tutorial) | Application tutorials live in `Tutorial/`, alongside focused `language/go/examples/`. |
+| [finops-review](language/powershell/Tutorial/finops-review) | A bounded cloud cost-review tutorial. It reads fixed resource costs, computes the highest-cost resource below a 5% utilization threshold, and drafts a review-only action. No clo... |
+| [windows-diagnostics](language/powershell/Tutorial/windows-diagnostics) | A read-only Windows operations tutorial. PowerShell calls the shared C# Core through `praxo-core-ps`; the Agent has two fixed tools, `read_service` and `read_disk`. It produces... |
 
 ## Verify
 
