@@ -91,6 +91,8 @@ Scenario-oriented tutorials live under `language/powershell/Tutorial`. Planning 
 | [finops-review](language/powershell/Tutorial/finops-review) | A bounded cloud cost-review tutorial. It reads fixed resource costs, computes the highest-cost resource below a 5% utilization threshold, and drafts a review-only action. No clo... |
 | [windows-diagnostics](language/powershell/Tutorial/windows-diagnostics) | A read-only Windows operations tutorial. PowerShell calls the shared C# Core through `praxo-core-ps`; the Agent has two fixed tools, `read_service` and `read_disk`. It produces... |
 
+## Reference Applications
+
 No accepted end-to-end reference application is recorded for this language yet. Candidate goals are tracked in the [Reference Application Portfolio](https://axisvela.github.io/praxo-core/project/roadmap/#reference-application-portfolio).
 
 ## Verify
