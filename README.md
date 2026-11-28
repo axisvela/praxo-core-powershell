@@ -1,6 +1,6 @@
 # PRAXO-CORE for PowerShell
 
-PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its PowerShell Core: a shared-runtime wrapper over the C# Core for existing PowerShell automation that needs a model/tool loop, explicit policy and tool scope, events, memory, checkpoints, and human-in-the-loop decisions.
+PRAXO-CORE (also written praxocore) is an embeddable, MIT-licensed agent framework. PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its PowerShell Core: a shared-runtime wrapper over the C# Core for existing PowerShell automation that needs a model/tool loop, explicit policy and tool scope, events, memory, checkpoints, and human-in-the-loop decisions.
 
 ## At a glance
 
@@ -68,17 +68,17 @@ Runnable examples live under [`language/powershell/examples`](language/powershel
 | --- | --- |
 | [advanced-delegation](language/powershell/examples/advanced-delegation) | Application-level parent/child delegation plus six governance negative checks. |
 | [checkpoint](language/powershell/examples/checkpoint) | This example uses the PowerShell Core checkpoint allowlist for a registered payload round trip. |
-| [consumer](language/powershell/examples/consumer) | This starter is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. The PowerShell module loads `Praxo.Core.dll`; the agent loop, tools, policy, and deterministic model be... |
+| [consumer](language/powershell/examples/consumer) | This starter is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. The PowerShell module loads `Praxo.Core.dll`; the agent loop, tools, policy, and deterministic model behavior are inherited from the C# Core. No network, credentials, or model service is needed. |
 | [event-sink](language/powershell/examples/event-sink) | This example demonstrates event fan-out and tool-only filtering with PowerShell-friendly sink collections. |
 | [hitl](language/powershell/examples/hitl) | This example demonstrates a write tool that requires human approval: |
 | [identity-policy](language/powershell/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, role-mismatched, and tenant-mismatched actions. |
-| [live-model](language/powershell/examples/live-model) | This example is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. It uses the C# `OpenAiCompatibleModel` and registers one low-risk `get_time` tool with a small JSON Sch... |
-| [mcp](language/powershell/examples/mcp) | The PowerShell Core does not bundle an MCP client. This example provides a transport-neutral MCP-shaped client boundary: initialize, `tools/list`, and `tools/call` over a caller... |
+| [live-model](language/powershell/examples/live-model) | This example is a thin PowerShell wrapper over the C# PRAXO-CORE runtime. It uses the C# `OpenAiCompatibleModel` and registers one low-risk `get_time` tool with a small JSON Schema. The agent loop, policy enforcement, and provider adapter are inherited from the C# Core. |
+| [mcp](language/powershell/examples/mcp) | The PowerShell Core does not bundle an MCP client. This example provides a transport-neutral MCP-shaped client boundary: initialize, `tools/list`, and `tools/call` over a caller-owned transport. |
 | [provider-fallback](language/powershell/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
 | [representative-chain](language/powershell/examples/representative-chain) | Deterministic representative chain covering MCP record, final-argument authorization, governed child delegation, OTel/Harmovela events, and an edited denial with zero effects. |
 | [retry](language/powershell/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
 | [service](language/powershell/examples/service) | This example defines a transport-neutral request handler with health, principal, and run cases. |
-| [session-checkpoint](language/powershell/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns. It uses the module's `New-PraxoSession` and `Invoke-PraxoAgent` over the C# Core runtime, plus the... |
+| [session-checkpoint](language/powershell/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns. It uses the module's `New-PraxoSession` and `Invoke-PraxoAgent` over the C# Core runtime, plus the Core checkpoint allowlist and a teaching in-memory store. Production storage and retention remain application-owned. |
 | [streaming](language/powershell/examples/streaming) | This example accumulates streamed chunks and checks that they reconstruct the final output. |
 | [structured-output](language/powershell/examples/structured-output) | This example validates a final JSON answer against a schema and rejects invalid output. |
 
@@ -89,8 +89,8 @@ Scenario-oriented tutorials live under `language/powershell/Tutorial`. Planning 
 | Path | What it shows |
 | --- | --- |
 | [Tutorial](language/powershell/Tutorial) | Application tutorials live in `Tutorial/`, alongside focused `language/go/examples/`. |
-| [finops-review](language/powershell/Tutorial/finops-review) | A bounded cloud cost-review tutorial. It reads fixed resource costs, computes the highest-cost resource below a 5% utilization threshold, and drafts a review-only action. No clo... |
-| [windows-diagnostics](language/powershell/Tutorial/windows-diagnostics) | A read-only Windows operations tutorial. PowerShell calls the shared C# Core through `praxo-core-ps`; the Agent has two fixed tools, `read_service` and `read_disk`. It produces... |
+| [finops-review](language/powershell/Tutorial/finops-review) | A bounded cloud cost-review tutorial. It reads fixed resource costs, computes the highest-cost resource below a 5% utilization threshold, and drafts a review-only action. No cloud API is called and no resource is terminated. |
+| [windows-diagnostics](language/powershell/Tutorial/windows-diagnostics) | A read-only Windows operations tutorial. PowerShell calls the shared C# Core through `praxo-core-ps`; the Agent has two fixed tools, `read_service` and `read_disk`. It produces a structured report and never executes a model-selected command, changes a service, deletes files, or performs a repair. |
 
 ## Reference Applications
 
@@ -109,6 +109,11 @@ pwsh -NoProfile -File language/powershell/api-snapshot.ps1 -Check
 ```
 
 This mirror contains the language source and the shared `spec/` vectors, so the implementation can be built and tested here. See [`language/powershell/README.md`](language/powershell/README.md) for the exact commands. The monorepo CI runs conformance, API snapshot, and native tests for this implementation.
+
+## Boundaries
+
+Reference application source is not end-to-end portfolio acceptance; follow each README's scope and evidence.
+PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety controller. Do not infer exactly-once execution, complete sandbox isolation, production security certification, live-provider behavior, or physical safety from this package.
 
 ## Community
 
@@ -139,6 +144,5 @@ This mirror contains the language source and the shared `spec/` vectors, so the 
 
 This repository is a discovery mirror of the canonical PowerShell source. The monorepo remains the source of truth and the release workflow source. The mirror's `main` branch tracks current source, not a release snapshot. Source tags refer to the canonical monorepo and are not necessarily present in this mirror; syncing the branch does not publish mirror tags or registry packages.
 
-PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety controller. Do not infer exactly-once execution, complete sandbox isolation, production security certification, live-provider behavior, or physical safety from this package.
 
 MIT licensed.
